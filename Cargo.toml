@@ -3,4 +3,12 @@ name = "encore-builder"
 version = "0.1.0"
 edition = "2024"
 
+[build-dependencies]
+bootloader = "0.11.10"
+encore = { path = "encore", artifact = "bin", target = "x86_64-unknown-none" }
+
 [dependencies]
+ovmf-prebuilt = "0.2.2"
+
+[workspace]
+members = ["encore"]
