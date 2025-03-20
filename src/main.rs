@@ -6,7 +6,8 @@ fn main() {
     let bios_path = env!("BIOS_PATH");
 
     // choose whether to start the UEFI or BIOS image
-    let uefi = true;
+    let uefi = std::env::var("USE_UEFI").as_deref() == Ok("1");
+
     let prebuilt =
         Prebuilt::fetch(Source::LATEST, "target/ovmf").expect("failed to update prebuilt");
     let bios_code = prebuilt.get_file(Arch::X64, FileType::Code);
@@ -17,9 +18,6 @@ fn main() {
 
     let mut cmd = std::process::Command::new("qemu-system-x86_64");
     if uefi {
-        // deprecated
-        // cmd.arg("-bios")
-        //     .arg(prebuilt.get_file(Arch::X64, FileType::Code));
         cmd.arg("-drive")
             .arg(format!("if=pflash,format=raw,file={bios_path_code}"));
         cmd.arg("-drive")
