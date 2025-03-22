@@ -11,6 +11,7 @@ use ovmf_prebuilt::{Arch, FileType, Prebuilt, Source};
 fn main() {
     // read env variables that were set in build script
     let uefi_path = env!("UEFI_PATH");
+    // println!("UEFI path: {}", uefi_path);
     let bios_path = env!("BIOS_PATH");
 
     // choose whether to start the UEFI or BIOS image
