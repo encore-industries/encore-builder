@@ -6,7 +6,7 @@ fn main() {
 
     // set by cargo's artifact dependency feature, see
     // https://doc.rust-lang.org/nightly/cargo/reference/unstable.html#artifact-dependencies
-    let test = true;
+    let test = false;
     let kernel: PathBuf = if test {
         // to build the test kernel you have to run `cargo test --no-run`
         PathBuf::from("target/x86_64-unknown-none/debug/deps/encore-7ecd34d043bd164c")
