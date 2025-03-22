@@ -204,6 +204,7 @@ dependencies = [
  "com_logger",
  "log",
  "noto-sans-mono-bitmap",
+ "spin",
  "x86_64",
 ]
 
