@@ -3,9 +3,16 @@ use std::path::PathBuf;
 fn main() {
     // set by cargo, build scripts should use this directory for output files
     let out_dir = PathBuf::from(std::env::var_os("OUT_DIR").unwrap());
+
     // set by cargo's artifact dependency feature, see
     // https://doc.rust-lang.org/nightly/cargo/reference/unstable.html#artifact-dependencies
-    let kernel = PathBuf::from(std::env::var_os("CARGO_BIN_FILE_ENCORE_encore").unwrap());
+    let test = true;
+    let kernel: PathBuf = if test {
+        // to build the test kernel you have to run `cargo test --no-run`
+        PathBuf::from("target/x86_64-unknown-none/debug/deps/encore-7ecd34d043bd164c")
+    } else {
+        PathBuf::from(std::env::var_os("CARGO_BIN_FILE_ENCORE_encore").unwrap())
+    };
 
     // create an UEFI disk image (optional)
     let uefi_path = out_dir.join("uefi.img");

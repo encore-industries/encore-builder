@@ -1,4 +1,12 @@
+// use clap::Parser;
 use ovmf_prebuilt::{Arch, FileType, Prebuilt, Source};
+
+// #[derive(Parser, Debug)]
+// #[command(version, about, long_about = None)]
+// struct Args {
+//     #[arg(short, long, default_value = "false")]
+//     test: bool,
+// }
 
 fn main() {
     // read env variables that were set in build script
