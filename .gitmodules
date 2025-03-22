@@ -1,3 +1,4 @@
 [submodule "encore"]
 	path = encore
 	url = git@github.com:encore-industries/encore.git
+	update = merge
